@@ -1,0 +1,21 @@
+﻿@model OA_Data.Skill
+@{
+    ViewData["Title"] = "Delete";
+}
+<h2>Delete Skill</h2>
+
+<form asp-action="Delete" method="post">
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">Skill Id</dt>
+            <dd class="col-sm-10">@Model.Id</dd>
+
+            <dt class="col-sm-2">Skill Name</dt>
+            <dd class="col-sm-10">@Model.skillName</dd>
+        </dl>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a class="btn btn-primary" asp-action="Index">Back To List</a>
+    </div>
+</form>

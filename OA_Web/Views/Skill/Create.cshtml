@@ -3,16 +3,17 @@
     ViewData["Title"] = "Create";
 }
 <h2>Create Skill</h2>
-
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label>Skill Name</label>
-        <input asp-for="skillName" class="form-control" />
-        <span asp-validation-for="skillName" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </div>
-</form>
+<div style="width:50%">
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label>Skill Name</label>
+            <input style="width:50%" asp-for="skillName" class="form-control" />
+            <span asp-validation-for="skillName" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>

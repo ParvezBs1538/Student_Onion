@@ -54,6 +54,12 @@ namespace OA_Web.Controllers
         }
         public IActionResult Delete(int id)
         {
+            Skill skill = _skill.GetBySkillId(id);
+            return View(skill);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int id)
+        {
             _skill.DeleteSkill(id);
             return RedirectToAction("Index");
         }
