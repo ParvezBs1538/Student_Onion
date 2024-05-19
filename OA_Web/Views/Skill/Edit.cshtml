@@ -1,0 +1,19 @@
+﻿@model OA_Data.Skill
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>Edit Skill</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label>Skill Name</label>
+        <input asp-for="skillName" class="form-control" />
+        <span asp-validation-for="skillName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

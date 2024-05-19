@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OA_Data.Skill>
+@{
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+</p>
+
+<div style="width:70%">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SkillName</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var skill in Model)
+            {
+                <tr>
+                    <th width="20%">
+                        @skill.Id
+                    </th>
+                    <th width="20%">
+                        @skill.skillName
+                    </th>
+                    <td width="30%">
+                        <div role="group">
+                            <a asp-controller="Skill" asp-action="Edit" asp-route-id="@skill.Id" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-controller="Skill" asp-action="Details" asp-route-id="@skill.Id" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Details</a>
+                            <a asp-controller="Skill" asp-action="Delete" asp-route-id="@skill.Id" class="btn btn-warning mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
