@@ -2,17 +2,18 @@
 @{
     ViewData["Title"] = "Details";
 }
-<h2>Create Skill</h2>
+<h2>Details Skill</h2>
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label>Skill Name</label>
-        <input asp-for="skillName" class="form-control" />
-        <span asp-validation-for="skillName" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </div>
-</form>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Skill Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">Skill Name</dt>
+        <dd class="col-sm-10">@Model.skillName</dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id ="@Model.Id">Edit</a>
+    <a class="btn btn-primary" asp-action="Index">Back To List</a>
+</div>
