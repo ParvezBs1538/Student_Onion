@@ -14,6 +14,7 @@ builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<ISkillService, SkillService>();
+builder.Services.AddTransient<IStudentService, StudentService>();
 
 var app = builder.Build();
 
