@@ -8,9 +8,9 @@ namespace OA_Web.Controllers
     public class SkillController : Controller
     {
         private readonly ISkillService _skill;
-        public SkillController(ISkillService _skill)
+        public SkillController(ISkillService skill)
         {
-            this._skill = _skill;
+            _skill = skill;
         }
 
         public IActionResult Index()

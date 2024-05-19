@@ -1,14 +1,12 @@
 ﻿@model OA_Data.Student
-
 @{
     ViewData["Title"] = "Add Student";
 }
-
 <h2>Create Student</h2>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-controller="Student" asp-action="Create" method="post">
+        <form asp-action="Create" method="post">
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Student Name</label>
                 <input asp-for="Name" class="form-control" />
@@ -23,7 +21,13 @@
 
             <div class="form-group">
                 <label asp-for="skillid" class="control-label">Skill</label>
-                <select asp-for="skillid" class="form-control" asp-items="ViewBag.Skills"></select>
+                <select asp-for="skillid" class="form-control">
+                    <option value="" disabled selected>Select Skill</option>
+                    @foreach (var skill in ViewBag.Skills)
+                    {
+                        <option value="@skill.Value">@skill.Text</option>
+                    }
+                </select>
                 <span asp-validation-for="skillid" class="text-danger"></span>
             </div>
 
@@ -33,3 +37,9 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

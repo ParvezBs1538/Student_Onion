@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OA_Data;
 using OA_Service;
+using System.Linq;
 
 namespace OA_Web.Controllers
 {
@@ -9,6 +10,7 @@ namespace OA_Web.Controllers
     {
         private readonly IStudentService _student;
         private readonly ISkillService _skill;
+
         public StudentController(IStudentService student, ISkillService skill)
         {
             _student = student;
@@ -20,6 +22,7 @@ namespace OA_Web.Controllers
             IEnumerable<Student> students = _student.GetAllStudents();
             return View(students);
         }
+
         public IActionResult Create()
         {
             ViewBag.Skills = _skill.GetAllSkills()
@@ -29,18 +32,16 @@ namespace OA_Web.Controllers
                     Text = s.skillName
                 })
                 .ToList();
-            //ViewBag.getskill = _skill.GetAllSkills();
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(Student student)
         {
-            if (ModelState.IsValid)
-            {
-                _student.InsertStudent(student);
-                return RedirectToAction("Index");
-            }
+            _student.InsertStudent(student);
+            return RedirectToAction("Index");
 
+            // Populate ViewBag.Skills again to ensure the dropdown is available when the view is returned
             ViewBag.Skills = _skill.GetAllSkills()
                 .Select(s => new SelectListItem
                 {
