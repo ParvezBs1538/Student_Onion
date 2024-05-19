@@ -34,8 +34,8 @@ namespace OA_Web.Controllers
         }
         public IActionResult Edit(int id)
         {
-            var item = _skill.GetBySkillId(id);
-            return View(item);
+            Skill skill = _skill.GetBySkillId(id);
+            return View(skill);
         }
         [HttpPost]
         public IActionResult Edit(Skill skill)
@@ -47,6 +47,11 @@ namespace OA_Web.Controllers
             }
             return View(skill);
         }
+        public IActionResult Details(int id)
+        {
+            Skill skill = _skill.SkillDetails(id);
+            return View(skill);
+        }
         public IActionResult Delete(int id)
         {
             _skill.DeleteSkill(id);
@@ -54,4 +59,3 @@ namespace OA_Web.Controllers
         }
     }
 }
-// i am from developer branch
