@@ -38,8 +38,11 @@ namespace OA_Web.Controllers
         [HttpPost]
         public IActionResult Create(Student student)
         {
-            _student.InsertStudent(student);
-            return RedirectToAction("Index");
+            //if (ModelState.IsValid)
+            {
+                _student.InsertStudent(student);
+                return RedirectToAction("Index");
+            }
 
             // Populate ViewBag.Skills again to ensure the dropdown is available when the view is returned
             ViewBag.Skills = _skill.GetAllSkills()

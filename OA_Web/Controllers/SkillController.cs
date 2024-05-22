@@ -25,6 +25,11 @@ namespace OA_Web.Controllers
         [HttpPost]
         public IActionResult Create(Skill skill)
         {
+            if (_skill.SkillNameExists(skill.skillName))
+            {
+                ModelState.AddModelError("SkillName", "Skill name already exists.");
+            }
+
             if (ModelState.IsValid)
             {
                 _skill.InsertSkill(skill);

@@ -11,5 +11,6 @@ namespace OA_Service.Skill_Service
         Skill GetBySkillId(int id);
         IEnumerable<Skill> GetAllSkills();
         void SaveChanges();
+        bool SkillNameExists(string entity);
     }
 }

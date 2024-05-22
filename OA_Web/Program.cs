@@ -3,7 +3,6 @@ using OA_Repository;
 using OA_Service.Skill_Service;
 using OA_Service.Student_Service;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

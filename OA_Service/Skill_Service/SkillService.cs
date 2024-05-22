@@ -46,5 +46,10 @@ namespace OA_Service.Skill_Service
         {
             db.Update(entity);
         }
+        public bool SkillNameExists(string SkillName)
+        {
+            //return db.GetAll().Any(s => s.skillName == skillName);
+            return db.GetAll().Any(s => s.skillName.Equals(SkillName, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }
