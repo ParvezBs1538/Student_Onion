@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OA_Data;
-using OA_Service;
+using OA_Service.Skill_Service;
 
 
 namespace OA_Web.Controllers

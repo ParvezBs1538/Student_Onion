@@ -1,11 +1,6 @@
 ﻿using OA_Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OA_Service
+namespace OA_Service.Skill_Service
 {
     public interface ISkillService
     {

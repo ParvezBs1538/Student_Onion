@@ -2,7 +2,7 @@
 using OA_Repository;
 using System.Collections.Generic;
 
-namespace OA_Service
+namespace OA_Service.Student_Service
 {
     public class StudentService : IStudentService
     {

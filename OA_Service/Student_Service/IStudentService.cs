@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OA_Service
+namespace OA_Service.Student_Service
 {
     public interface IStudentService
     {

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OA_Repository;
-using OA_Service;
+using OA_Service.Skill_Service;
+using OA_Service.Student_Service;
 
 
 var builder = WebApplication.CreateBuilder(args);

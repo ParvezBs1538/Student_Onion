@@ -1,7 +1,7 @@
 ﻿using OA_Data;
 using OA_Repository;
 
-namespace OA_Service
+namespace OA_Service.Skill_Service
 {
     public class SkillService : ISkillService
     {
