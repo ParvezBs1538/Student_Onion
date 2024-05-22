@@ -43,5 +43,10 @@ namespace OA_Service.Student_Service
         {
             return GetByStudentId(id);
         }
+
+        public void UpdateStudent(Student entity)
+        {
+            db.Update(entity);
+        }
     }
 }

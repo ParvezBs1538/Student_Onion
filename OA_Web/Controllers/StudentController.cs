@@ -77,5 +77,43 @@ namespace OA_Web.Controllers
             Student student = _student.StudentDetails(id);
             return View(student);
         }
+        public IActionResult Edit(int id)
+        {
+            var student = _student.GetByStudentId(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Skills = _skill.GetAllSkills()
+                .Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.skillName
+                })
+                .ToList();
+
+            return View(student);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Student student)
+        {
+            //if (ModelState.IsValid)
+            {
+                _student.UpdateStudent(student);
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Skills = _skill.GetAllSkills()
+                .Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.skillName
+                })
+                .ToList();
+
+            return View(student);
+        }
     }
 }
