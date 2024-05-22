@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OA_Repository;
-using OA_Service;
-
+using OA_Service.Skill_Service;
+using OA_Service.Student_Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,7 @@ builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<ISkillService, SkillService>();
+builder.Services.AddTransient<IStudentService, StudentService>();
 
 var app = builder.Build();
 

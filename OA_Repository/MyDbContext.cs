@@ -14,5 +14,6 @@ namespace OA_Repository
         {
         }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

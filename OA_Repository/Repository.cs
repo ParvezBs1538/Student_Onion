@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OA_Data;
+using System.Linq.Expressions;
 
 namespace OA_Repository
 {
@@ -33,6 +34,16 @@ namespace OA_Repository
         public IEnumerable<T> GetAll()
         {
             return entities.ToList();
+        }
+
+        public IEnumerable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = entities;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return query.ToList();
         }
 
         public T GetById(int id)

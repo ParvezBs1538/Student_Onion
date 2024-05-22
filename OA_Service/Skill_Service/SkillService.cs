@@ -1,7 +1,7 @@
 ﻿using OA_Data;
 using OA_Repository;
 
-namespace OA_Service
+namespace OA_Service.Skill_Service
 {
     public class SkillService : ISkillService
     {
@@ -45,6 +45,11 @@ namespace OA_Service
         public void UpdateSkill(Skill entity)
         {
             db.Update(entity);
+        }
+        public bool SkillNameExists(string SkillName)
+        {
+            //return db.GetAll().Any(s => s.skillName == skillName);
+            return db.GetAll().Any(s => s.skillName.Equals(SkillName, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

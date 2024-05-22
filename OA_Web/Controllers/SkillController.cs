@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OA_Data;
-using OA_Service;
+using OA_Service.Skill_Service;
 
 
 namespace OA_Web.Controllers
@@ -8,9 +8,9 @@ namespace OA_Web.Controllers
     public class SkillController : Controller
     {
         private readonly ISkillService _skill;
-        public SkillController(ISkillService _skill)
+        public SkillController(ISkillService skill)
         {
-            this._skill = _skill;
+            _skill = skill;
         }
 
         public IActionResult Index()
@@ -25,6 +25,11 @@ namespace OA_Web.Controllers
         [HttpPost]
         public IActionResult Create(Skill skill)
         {
+            if (_skill.SkillNameExists(skill.skillName))
+            {
+                ModelState.AddModelError("SkillName", "Skill name already exists.");
+            }
+
             if (ModelState.IsValid)
             {
                 _skill.InsertSkill(skill);

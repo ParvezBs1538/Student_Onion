@@ -1,9 +1,5 @@
 ﻿using OA_Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace OA_Repository
 {
@@ -12,10 +8,9 @@ namespace OA_Repository
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);
-        //void Delete(int id);
-        T Details(int id);
         T GetById(int id);
         IEnumerable<T> GetAll();
+        IEnumerable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
         void SaveChanges();
     }
 }

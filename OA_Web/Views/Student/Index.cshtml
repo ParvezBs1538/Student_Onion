@@ -1,0 +1,68 @@
+﻿@model IEnumerable<OA_Data.Student>
+@{
+    ViewData["Title"] = "Student List";
+}
+<h2>Student List</h2>
+
+<div class="col-4">
+    <form asp-action="Index" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by Student Name" name="searchString">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+
+        <div class="input-group mb-3">
+            <select name="skillFilter" class="form-control">
+                <option value="">-- Select Skill --</option>
+                @foreach (var skill in ViewBag.Skills)
+                {
+                    <option value="@skill.Value">@skill.Text</option>
+                }
+            </select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Student</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                SkillName
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.Skill.skillName
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
