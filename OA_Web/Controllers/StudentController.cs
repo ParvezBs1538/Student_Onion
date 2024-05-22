@@ -24,16 +24,45 @@ namespace OA_Web.Controllers
         //    return View(students);
         //}
 
-        public IActionResult Index(string searchString)
+        //public IActionResult Index(string searchString)
+        //{
+        //    var students = _student.GetAllStudents();
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        //data = data.Where(x => x.Name == search).OrderBy(x => x.DisplayOrder).ToList();
+        //        students = students.Where(x => x.Name.Contains(searchString)).ToList();
+        //    }
+        //    return View(students);
+        //}
+
+        public IActionResult Index(string searchString, int? skillFilter)
         {
-            var students = _student.GetAllStudents();
+            IEnumerable<Student> students = _student.GetAllStudents();
+
+            // Filter by search string
             if (!string.IsNullOrEmpty(searchString))
             {
-                //data = data.Where(x => x.Name == search).OrderBy(x => x.DisplayOrder).ToList();
-                students = students.Where(x => x.Name.Contains(searchString)).ToList();
+                students = students.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
+
+            // Filter by skill
+            if (skillFilter.HasValue)
+            {
+                students = students.Where(s => s.skillid == skillFilter);
+            }
+
+            // Get all skills for the dropdown
+            ViewBag.Skills = _skill.GetAllSkills()
+                .Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.skillName
+                })
+                .ToList();
+
             return View(students);
         }
+
 
         public IActionResult Create()
         {

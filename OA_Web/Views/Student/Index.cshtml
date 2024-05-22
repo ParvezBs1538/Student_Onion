@@ -4,12 +4,22 @@
 }
 <h2>Student List</h2>
 
-
 <div class="col-4">
     <form asp-action="Index" method="get">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search by Student Name" name="searchString">
             <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+
+        <div class="input-group mb-3">
+            <select name="skillFilter" class="form-control">
+                <option value="">-- Select Skill --</option>
+                @foreach (var skill in ViewBag.Skills)
+                {
+                    <option value="@skill.Value">@skill.Text</option>
+                }
+            </select>
+            <input type="submit" value="Filter" class="btn btn-primary" />
         </div>
 
     </form>
