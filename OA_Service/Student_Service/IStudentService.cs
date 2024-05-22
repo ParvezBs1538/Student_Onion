@@ -9,9 +9,11 @@ namespace OA_Service.Student_Service
 {
     public interface IStudentService
     {
+        void DeleteStudent(int id);
         void InsertStudent(Student entity);
         IEnumerable<Student> GetAllStudents();
         Student GetByStudentId(int id);
+        Student StudentDetails(int id);
         void SaveChanges();
     }
 }

@@ -13,6 +13,12 @@ namespace OA_Service.Student_Service
             this.db = db;
         }
 
+        public void DeleteStudent(int id)
+        {
+            Student student = GetByStudentId(id);
+            db.Delete(student);
+        }
+
         public IEnumerable<Student> GetAllStudents()
         {
             return db.GetAllIncluding(s => s.Skill);
@@ -31,6 +37,11 @@ namespace OA_Service.Student_Service
         public void SaveChanges()
         {
             db.SaveChanges();
+        }
+
+        public Student StudentDetails(int id)
+        {
+            return GetByStudentId(id);
         }
     }
 }

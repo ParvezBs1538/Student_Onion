@@ -67,5 +67,15 @@ namespace OA_Web.Controllers
 
             return View(student);
         }
+        public IActionResult Delete(int id)
+        {
+            _student.DeleteStudent(id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Details(int id)
+        {
+            Student student = _student.StudentDetails(id);
+            return View(student);
+        }
     }
 }
