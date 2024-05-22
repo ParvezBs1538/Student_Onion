@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using OA_Data;
 using OA_Service.Skill_Service;
 using OA_Service.Student_Service;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OA_Web.Controllers
 {
@@ -17,9 +18,20 @@ namespace OA_Web.Controllers
             _skill = skill;
         }
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    IEnumerable<Student> students = _student.GetAllStudents();
+        //    return View(students);
+        //}
+
+        public IActionResult Index(string searchString)
         {
-            IEnumerable<Student> students = _student.GetAllStudents();
+            var students = _student.GetAllStudents();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                //data = data.Where(x => x.Name == search).OrderBy(x => x.DisplayOrder).ToList();
+                students = students.Where(x => x.Name.Contains(searchString)).ToList();
+            }
             return View(students);
         }
 

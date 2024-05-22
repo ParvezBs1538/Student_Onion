@@ -1,10 +1,19 @@
 ﻿@model IEnumerable<OA_Data.Student>
-
 @{
     ViewData["Title"] = "Student List";
 }
-
 <h2>Student List</h2>
+
+
+<div class="col-4">
+    <form asp-action="Index" method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by Student Name" name="searchString">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+
+    </form>
+</div>
 
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New Student</a>
